@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:letterSpacing="0.2"
+            android:text="LECTEUR MÉDIA"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:letterSpacing="0.2"
+            android:text="MUSIQUE • VIDÉO • PHOTO • PDF • OFFICE"
+            android:textColor="#7FB2CC"
+            android:textSize="10sp" />
+
+        <!-- Onglets (défilement horizontal car il y en a 5 maintenant) -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tabMusique"
+                    android:layout_width="112dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center"
+                    android:letterSpacing="0.1"
+                    android:text="♪ MUSIQUE"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tabVideo"
+                    android:layout_width="112dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center"
+                    android:letterSpacing="0.1"
+                    android:text="▶ VIDÉO"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <!-- NOUVEAU -->
+                <TextView
+                    android:id="@+id/tabPhoto"
+                    android:layout_width="112dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center"
+                    android:letterSpacing="0.1"
+                    android:text="▣ PHOTO"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <!-- NOUVEAU -->
+                <TextView
+                    android:id="@+id/tabPdf"
+                    android:layout_width="112dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center"
+                    android:letterSpacing="0.1"
+                    android:text="▤ PDF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <!-- NOUVEAU -->
+                <TextView
+                    android:id="@+id/tabOffice"
+                    android:layout_width="112dp"
+                    android:layout_height="42dp"
+                    android:gravity="center"
+                    android:letterSpacing="0.1"
+                    android:text="▦ OFFICE"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1">
+
+            <!-- ============ PANNEAU MUSIQUE ============ -->
+            <LinearLayout
+                android:id="@+id/panelMusique"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/playerCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <FrameLayout
+                        android:id="@+id/disqueContainer"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp" />
+
+                    <TextView
+                        android:id="@+id/textTitre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="Choisis une chanson"
+                        android:textColor="#FFFFFF"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textArtiste"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="Aucune lecture"
+                        android:textColor="#7FB2CC"
+                        android:textSize="13sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textTemps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0:00"
+                            android:textColor="#7FB2CC"
+                            android:textSize="12sp" />
+
+                        <SeekBar
+                            android:id="@+id/seekBar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/textDuree"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0:00"
+                            android:textColor="#7FB2CC"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/btnShuffle"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:gravity="center"
+                            android:text="⇄"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/btnPrev"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="8dp"
+                            android:padding="13dp"
+                            android:src="@android:drawable/ic_media_previous" />
+
+                        <ImageView
+                            android:id="@+id/btnPlay"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp"
+                            android:padding="18dp"
+                            android:src="@android:drawable/ic_media_play" />
+
+                        <ImageView
+                            android:id="@+id/btnNext"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginEnd="8dp"
+                            android:padding="13dp"
+                            android:src="@android:drawable/ic_media_next" />
+
+                        <TextView
+                            android:id="@+id/btnRepeat"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:gravity="center"
+                            android:text="↻"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="1">
+
+                    <ListView
+                        android:id="@+id/listeMusique"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbars="none" />
+
+                    <TextView
+                        android:id="@+id/videMusique"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="24dp"
+                        android:text="Chargement..."
+                        android:textColor="#7FB2CC"
+                        android:textSize="14sp" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- ============ PANNEAU VIDÉO ============ -->
+            <FrameLayout
+                android:id="@+id/panelVideo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <ListView
+                    android:id="@+id/listeVideo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none" />
+
+                <TextView
+                    android:id="@+id/videVideo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="24dp"
+                    android:text="Chargement..."
+                    android:textColor="#7FB2CC"
+                    android:textSize="14sp" />
+            </FrameLayout>
+
+            <!-- ============ PANNEAU PHOTO (NOUVEAU) ============ -->
+            <FrameLayout
+                android:id="@+id/panelPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <GridView
+                    android:id="@+id/gridPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:horizontalSpacing="6dp"
+                    android:numColumns="3"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="6dp" />
+
+                <TextView
+                    android:id="@+id/videPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="24dp"
+                    android:text="Chargement..."
+                    android:textColor="#7FB2CC"
+                    android:textSize="14sp" />
+            </FrameLayout>
+
+            <!-- ============ PANNEAU PDF (NOUVEAU) ============ -->
+            <LinearLayout
+                android:id="@+id/panelPdf"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▤"
+                    android:textColor="#F59E0B"
+                    android:textSize="64sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Lecteur PDF"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:text="Choisis un fichier PDF dans ton téléphone.\nTu pourras zoomer et changer de page."
+                    android:textColor="#7FB2CC"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/btnChoisirPdf"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:letterSpacing="0.1"
+                    android:text="OUVRIR UN PDF"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- ============ PANNEAU OFFICE (NOUVEAU) ============ -->
+            <LinearLayout
+                android:id="@+id/panelOffice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▦"
+                    android:textColor="#F59E0B"
+                    android:textSize="64sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Lecteur Microsoft Office"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:text="Word (.docx), Excel (.xlsx), PowerPoint (.pptx)\nChoisis un document dans ton téléphone, il s'ouvre ici."
+                    android:textColor="#7FB2CC"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/btnChoisirOffice"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:letterSpacing="0.1"
+                    android:text="OUVRIR UN DOCUMENT"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+</FrameLayout>

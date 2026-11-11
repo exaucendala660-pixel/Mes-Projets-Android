@@ -1,0 +1,13 @@
+# Fichiers Windows
+desktop.ini
+Thumbs.db
+
+# Android Studio
+.gradle/
+**/build/
+local.properties
+.idea/
+*.iml
+
+# Fichiers temporaires
+*.log
